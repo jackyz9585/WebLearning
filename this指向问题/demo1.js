@@ -15,10 +15,8 @@ OBJ.prototype = proto;
 function _new(...params) {
     //新建空对象，挂载构造函数原型属性
     let obj = Object.create(OBJ.prototype);
-    console.log(obj);
     // 绑定this指向，传入参数
     let res = OBJ.call(obj,...params);
-    console.log(obj);
     // 判断构造函数有无返回值
     return typeof res === 'object' ? res : obj;
 }
