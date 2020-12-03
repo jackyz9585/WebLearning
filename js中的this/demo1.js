@@ -1,5 +1,4 @@
 //new的实现，修改this的指向
-
 //原型
 let proto = {
     p1:'string'
