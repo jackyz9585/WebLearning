@@ -63,3 +63,5 @@ const testFun2 =  () => () => { console.log(this.v); };
 let test2 = testFun2.call(testObj1);
 test2();//321
 test2.call(testObj2);//321
+
+//本来想继续整理bind，call，apply以及new的js实现的，后来想了想，由很多细节需要考虑到，后面再单独写一个demo吧
