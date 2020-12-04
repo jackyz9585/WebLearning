@@ -1,5 +1,4 @@
 //new的实现，修改this的指向
-
 //原型
 let proto = {
     p1:'string'
@@ -13,18 +12,19 @@ function OBJ(val) {
 OBJ.prototype = proto;
 
 function _new(...params) {
+    //获取构造函数
+    const Constructor = params.shift();
     //新建空对象，挂载构造函数原型属性
-    let obj = Object.create(OBJ.prototype);
-    console.log(obj);
+    let obj = Object.create(Constructor.prototype);
     // 绑定this指向，传入参数
-    let res = OBJ.call(obj,...params);
-    console.log(obj);
+    let res = Constructor.call(obj,...params);
     // 判断构造函数有无返回值
     return typeof res === 'object' ? res : obj;
 }
 
-let obj = _new('test');
+let obj = _new(OBJ,'test');
 // let obj = new OBJ('test');
 console.log(obj instanceof OBJ);//true
 console.log(obj);//{val:'test'}
 console.log(obj.__proto__);//proto
+

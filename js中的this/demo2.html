@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    const testObj1 = {
+        v: 1
+    }
+    const testObj2 = {
+        v: 2
+    }
+
+    // var v = 321;//321
+    let v = 321;//undefined
+    const testFun2 = () => () => { console.log(this.v); };
+    let test2 = testFun2.call(testObj1);
+    test2();//321
+    test2.call(testObj2);//321
+</script>
