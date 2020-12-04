@@ -6,24 +6,24 @@
     能够接受参数
     柯里化
  */
-
 function test(v) {
     this.v = v
-    console.log(this.v);
+    // console.log(this.v);
     console.log(this);
 }
 test.prototype.text = 'test prototype';
-
 let obj = {
     v: '1'
 }
 /**
- * @param  {Array} context 
+ * @param  {Object} context 
  * @returns {function}
  */
 Function.prototype.myBind = function (context) {
-
-    //将function给self，防止混乱
+    // //如果传入的this对象为null，undefined,新建{},bind()指向了window，暂不确定
+    // if(!context){
+    //     context = {};
+    // }
     //调用的函数
     const self = this;
     let outerParam = Array.from(arguments).slice(1);
@@ -52,19 +52,18 @@ Function.prototype.myBind = function (context) {
     }
 
 }
-
-let res = test.myBind(obj, 1, 2, 3);
+// let res = test.myBind(obj,3);
+let res = test.myBind(null,7);
 res();
 // console.log(res.length);//0 bound函数的参数个数
-// console.log(res);
 const t = new res(3);
 //原型属性测试继承
-console.log(t.text);//test prototype
+// console.log(t.text);//test prototype
 
 // 使用setPrototypeOf()不会影响构造函数的原型属性
 // Object.setPrototypeOf(t,{'text':'123'});
 // 直接操作__proto__.text会对构造函数的原型有影响
-t.__proto__.text = 'new test prototype'
-console.log(t.text);
-console.log(test.prototype.text);//new test prototype / test prototype
+// t.__proto__.text = 'new test prototype'
+// console.log(t.text);
+// console.log(test.prototype.text);//new test prototype / test prototype
 
