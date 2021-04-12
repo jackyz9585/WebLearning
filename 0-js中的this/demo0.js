@@ -105,7 +105,7 @@ fun2.apply(obj2, ['1', '2', '3']);//参数数组
 //3 箭头函数
 //箭头函数是ES6中提出的一种函数，形式如(arguments)=>{function body}，但是，箭头函数中并没有this和arguments关键字
 //箭头函数的this指向的定义时候上下文this的指向，并且call/apply/bind不能影响箭头函数中this的指向
-
+//是根据外层（函数或者全局）作用域（词法作用域）来决定this
 //setTimeout内部callback指向全局对象
 const obj3 = {
     fn() {
@@ -134,6 +134,12 @@ fn31();//window
 function Fn4(v) {
     this.v = v
 }
+Fn4.prototype.test = function () {
+    return this
+}
 let obj4 = new Fn4(4);
 console.log(obj4.v);//4
 
+// 5 原型中的this
+// 这里应该和继承有关，下一块整理与继承相关模块
+console.log(obj4.test());//Fn4 {v:5}
