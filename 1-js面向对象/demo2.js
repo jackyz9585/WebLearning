@@ -49,3 +49,30 @@ function superType5(o){
 }
 
 
+// 寄生组合继承 最优继承
+// 接受两个构造函数
+function superType6(subType,superType){
+    let prototype = Object.create(superType);
+    prototype.constructor = subType;
+    subType.prototype = prototype;
+}
+
+function SuperType(name){
+    this.name = name;
+}
+SuperType.prototype.sayName = function(){
+    console.log(this.name);
+}
+
+function SubType(name,age){
+    this.age = age;
+    // 调用构造函数
+    SuperType.call(this,name);
+}
+
+superType6(SubType,SuperType);
+
+// 避免创建子类不必要的属性
+SubType.prototype.sayAge = function(){
+    console.log(this.age);
+}
