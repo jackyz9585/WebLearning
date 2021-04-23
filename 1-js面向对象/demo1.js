@@ -64,8 +64,10 @@ SuperType3.prototype.sayHi = function(){
 }
 function SubType3(name,age){
     this.age = age;
+    // 第二次调用超类构造函数
     SuperType3.call(this,name);
 }
+// 第一次调用超类构造函数
 SubType3.prototype = new SuperType3();
 SubType3.prototype.constructor = SubType3;// 将构造函数指向自身
 SubType3.prototype.sayAge = function(){
@@ -77,3 +79,6 @@ instance3_1.colors.push('green');
 console.log(instance3_1,instance3_2);
 instance3_1.sayHi()
 console.log(instance3_1.constructor);
+
+// 缺陷
+// 无论在什么情况下，会调用两次超类构造函数
