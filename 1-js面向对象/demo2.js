@@ -52,7 +52,8 @@ function superType5(o){
 // 寄生组合继承 最优继承
 // 接受两个构造函数
 function superType6(subType,superType){
-    let prototype = Object.create(superType);
+    // 获取超类原型属性
+    let prototype = Object.create(superType.prototype)
     prototype.constructor = subType;
     subType.prototype = prototype;
 }
@@ -65,9 +66,10 @@ SuperType.prototype.sayName = function(){
 }
 
 function SubType(name,age){
-    this.age = age;
     // 调用构造函数
     SuperType.call(this,name);
+    this.age = age;
+    console.log(this);
 }
 
 superType6(SubType,SuperType);
@@ -76,3 +78,6 @@ superType6(SubType,SuperType);
 SubType.prototype.sayAge = function(){
     console.log(this.age);
 }
+
+let instance3_1 = new SubType('aaa',25);
+console.log(instance3_1.name);
