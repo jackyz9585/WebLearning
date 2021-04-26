@@ -69,7 +69,6 @@ function SubType(name,age){
     // 调用构造函数
     SuperType.call(this,name);
     this.age = age;
-    console.log(this);
 }
 
 superType6(SubType,SuperType);
@@ -80,4 +79,3 @@ SubType.prototype.sayAge = function(){
 }
 
 let instance3_1 = new SubType('aaa',25);
-console.log(instance3_1.name);
