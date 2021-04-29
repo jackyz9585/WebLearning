@@ -56,3 +56,7 @@ function hasIEPlugins(name){
 // 后续再说
 
 
+// history
+window.history.go(-1);// 后退1页
+window.history.go('url');//跳转至最近的url
+history.length === 0; // 打开窗口后的第一个页面？
