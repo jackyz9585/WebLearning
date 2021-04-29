@@ -26,3 +26,33 @@ location.replace('https://www.baidu.com');
 // 参数表示从服务器重新加载(不推荐)
 location.reload(true)
 
+// navigator对象
+// navigator对象用于识别客户端浏览器的信息
+// 插件
+const {plugins} = navigator
+// 检测插件 -- 不支持IE
+function hasPlugins(name){
+    name = name.toLowerCase();
+    for (let i = 0; i < plugins.length; i++) {
+        if(plugins[i].name.toLowerCase().indexOf(name) > -1){
+            return true
+        } 
+    }
+    return false;
+}
+
+hasPlugins('flash')
+// IE
+function hasIEPlugins(name){
+    try {
+        new ActiveXObject(name);
+        return true;
+    } catch (error) {
+        return false
+    }
+}
+
+// 注册处理程序 -- H5新增，可以让一个站点指明处理特定类型信息
+// 后续再说
+
+
