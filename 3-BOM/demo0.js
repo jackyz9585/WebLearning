@@ -28,3 +28,19 @@ document.documentElement.clientHeight;document.documentElement.clientWidth;// �
 
 resizeTo(x,y);// 调整到长x宽y
 resizeBy(x,y);// 新窗口和旧窗口之差
+
+// 等价于<a href='url' target='target'></a>
+// target指如果有名为taget的窗口或者框架，就在窗口或者框架下加载这个url，否则，就会创建一个新窗口并命名为target（_self,_parent,_top,_blank）
+// 如果target并不是一个已经存在的窗口，则会根据options创建一个新的窗口或者标签页
+// options="width=400px,height=400px..."
+window.open('url','target','options','replace') 
+// open对应close，限于用open打开的窗口
+let page = window.open('https://www.baidu.com/','_blank');
+page.close()
+
+// setTimeout/setInterval
+// 在延迟回调之前使用clearTimeout清除回调的ID相当于什么都没发生
+// setTimeout第一个参数可以接受字符串，类似eval()，但是出于性能不推荐
+let time = setTimeout(function(){},1000);
+clearTimeout(time);
+
