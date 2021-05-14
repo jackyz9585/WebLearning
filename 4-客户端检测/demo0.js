@@ -23,7 +23,7 @@ function isSortable(object) {
 
 
 // 浏览器识别（最广泛）
-let client = function () {
+var client = function () {
     let engine = {
         ie: 0,
         gecko: 0,
